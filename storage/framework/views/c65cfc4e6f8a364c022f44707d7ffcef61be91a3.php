@@ -12,6 +12,9 @@
 
             </div>
         <?php endif; ?>
+        <?php if(!$message->isEmpty()): ?>
+            <div class="alert alert-danger"><?php echo e($message); ?></div>
+        <?php endif; ?>
         <?php
         use Illuminate\Support\Facades\DB;
         use Carbon\Carbon;
@@ -29,9 +32,7 @@
             $membername=$member->name;
         }
         ?>
-        <?php if(Session::has('message')): ?>
-            <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
-        <?php endif; ?>
+       
         
           
         <div class="form-group">

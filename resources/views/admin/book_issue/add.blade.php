@@ -12,6 +12,9 @@
                 {!! $errors->first() !!}
             </div>
         @endif
+        @if(Session::has('message'))
+            <div class="alert alert-danger">{{ Session::get('message') }}</div>
+        @endif
         @php
         use Illuminate\Support\Facades\DB;
         use Carbon\Carbon;
@@ -29,9 +32,7 @@
             $membername=$member->name;
         }
         @endphp
-        @if(Session::has('message'))
-            <div class="alert alert-danger">{{ Session::get('message') }}</div>
-        @endif
+       
         
           
         <div class="form-group">

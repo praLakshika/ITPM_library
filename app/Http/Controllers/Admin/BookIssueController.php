@@ -90,6 +90,25 @@ class BookIssueController extends Controller
     }
     public function store(Book_issue $Book_issue,Request $request)
     {
+        
+        $id=$request->get('memberID');
+        $Books =$request->get('bookID');
+
+
+       $getdate = Carbon::parse($request->get('getdate'));
+        $book_issued_day = Carbon::parse($request->get('book_issued_day'));
+
+        $diff=date_diff($getdate,$book_issued_day);
+        $length = $diff->format("%R%a");
+
+        if($length<=0)
+        {
+             $message = 'Due date from today onwards';
+            return view('admin.book_issue.add', compact('Books','id'))->with('message', $message);
+        }
+        else
+        {
+            
         $Book_issue->book_id=$request->get('bookID');
         $Book_issue->member_id=$request->get('memberID');
         $Book_issue->getdate=$request->get('getdate');
@@ -107,8 +126,10 @@ class BookIssueController extends Controller
            ->where('id', $request->get('bookID'))
            ->update(['book_quantity_now' => $Booknow]);
 
+
         return view('admin.book_issue.success');
 
+    }
     }
     public function book_issue_book(Request $request)
     {
