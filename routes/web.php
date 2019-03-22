@@ -57,7 +57,7 @@ Route::group(['namespace' => 'Auth'], function () {
  */
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'administrator'], function () {
    
-
+    
     //member function
     Route::get('member','MemberController@index')->name('member');
     Route::get('member/add', 'MemberController@create')->name('member.add');
@@ -76,7 +76,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('online_book/delete/{bookonline}', 'OnlineBookController@destroy')->name('online_book.delete');
     Route::post('online_book/delete/deletebook','OnlineBookController@sedelete');
-
+    Route::post('searchbookissue', 'BookIssueController@search_book_issue')->name('book_issue.BookIssueController');
+   
     //Book
     Route::get('book','BookController@index')->name('book');
     Route::get('book/add','BookController@create')->name('book.add');
@@ -85,22 +86,24 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('book/addbook', 'BookController@store')->name('book.addbook');
     Route::get('book/{book}', 'BookController@show')->name('book.show');
     Route::get('book/edit/{book}', 'BookController@edit')->name('book.edit');
+    
+    Route::post('searchBook', 'BookController@searchBook')->name('book.searchBook');
    
     Route::post('book/edit/updatebook','BookController@update');
 
     Route::get('book/delete/{book}', 'BookController@destroy')->name('book.delete');
     Route::post('book/delete/deletebook','BookController@sedelete');
-    //Book issue addbook_category
+    //Book issue addbook_category 
     Route::get('book_issue','BookIssueController@index')->name('book_issue');
     Route::get('book_issue/add','BookIssueController@create')->name('book_issue.add');
     Route::post('book_issue/addbook/addbook_issue', 'BookIssueController@store')->name('book_issue.addbook');
     Route::get('book_issue/{book}', 'BookIssueController@show')->name('book_issue.show');
     Route::get('book_issue/return/{Book_issue}', 'BookIssueController@return')->name('book_issue.return');
-   
-    Route::post('book_issue/addbook/book_issue_book', 'BookIssueController@book_issue_book')->name('book_issue.addbook');
+     Route::post('book_issue/addbook/book_issue_book', 'BookIssueController@book_issue_book')->name('book_issue.addbook');
     Route::post('book_issue/addbook/book_issue_add', 'BookIssueController@book_issue_add')->name('book_issue.addbook.book_issue_add');
     Route::post('book_issue/return/returnbook','BookIssueController@returnbook');
 
+    
     Route::get('book_issue/delete/{book}', 'BookIssueController@destroy')->name('book_issue.delete');
     Route::post('book_issue/delete/deletebook','BookIssueController@sedelete');
 

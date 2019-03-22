@@ -12,6 +12,7 @@ use App\Models\Book;
 use App\Models\Book_cat;
 use App\Models\Fine_fee;
 
+use Validator;
 use Illuminate\Support\Facades\DB;
 class BookController extends Controller
 {
@@ -43,11 +44,28 @@ class BookController extends Controller
     }
     public function store_book_category(Request $request,Book_category $Bookc)
     {   
+        $validatedData = [
+            'book_category_name' => 'required|regex:/^[a-zA-Z .]+$/u|max:255'
+        ];
+        $customMessages = [
+            'book_category_name.regex' => 'Book Category Name cannot contain numbers and special characters'
+        ];
+        $this->validate($request, $validatedData, $customMessages);
+
         $Bookc->book_category_name=$request->get('book_category_name');
         $Bookc->save();
         
         return view('admin.book.success');
     }
+    public function searchBook(Request $request)
+    {
+        $Books = DB::table('book')
+        ->where('id', $request['search'])
+        ->orWhere('bookname', 'like', '%' . $request['search'] . '%')
+        ->get();
+        return view('admin.book.index', compact('Books'));
+    }
+
 
     /** 
      * Store a newly created resource in storage.
@@ -57,6 +75,25 @@ class BookController extends Controller
      */
     public function store(Request $request,Book $Book, Book_cat $Book_cat,Fine_fee $Fine_fee)
     {
+        $validatedData = [
+            'book_name' => 'required|regex:/^[a-zA-Z .]+$/u|max:255',
+            'book_quantity' => 'required|numeric|integer',
+            'book_year' => 'required|numeric|integer',
+            'fine_fee' => 'required|numeric|integer',
+            'book_image' => 'required',
+            'checkid' => 'required'
+            
+        ];
+        $customMessages = [
+            'name.regex' => 'Name cannot contain numbers and special characters',
+            'book_quantity.integer' => 'Book quantity must be integer',
+            'book_year.integer' =>  'Book year must be integer',
+            'fine_fee.integer' =>  'Book fine fee must be integer',
+            'book_image.integer' =>  'Book image must be required',
+            'checkid.required' =>  'Book category must be required'
+        ];
+        $this->validate($request, $validatedData, $customMessages);
+
         $pic_name="panding";
         $file=$request ->file('book_image');
 
@@ -157,6 +194,7 @@ class BookController extends Controller
 
        $file=$request ->file('book_image');
 
+       return $file;
         $bookVals = DB::select('select * from book ORDER BY id DESC LIMIT 1');
         $type=$file->guessExtension();
         $lastid = $request['id'];

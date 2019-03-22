@@ -14,12 +14,12 @@
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li>
-                            <a href="<?php echo e(route('logout')); ?>">
-                                <i class="fas fa-sign-out pull-right"></i> <?php echo e(__('views.backend.section.header.menu_0')); ?>
-
-                            </a>
-                        </li>
+                            <li>
+                                    <a href="<?php echo e(route('logout')); ?>">
+                                        <i class="fas fa-sign-out-alt"></i>Log out
+                                    </a>
+                                </li>
+                       
                         <li>
                                 <a href="<?php echo e(route('/')); ?>">
                                     <i class="fa fa-home pull-right"></i> Home

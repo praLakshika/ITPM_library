@@ -17,7 +17,7 @@
                         <a href="{{ route('admin.book_category.add') }}" class="btn btn-primary">Add Book category</a>
                 <div class="right-searchbar">
                                 <!-- Search form -->
-                                <form action="search" method="post" class="form-inline">
+                                <form action="searchBook" method="post" class="form-inline">
                                         {{ csrf_field() }}
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search" required />

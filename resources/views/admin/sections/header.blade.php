@@ -14,11 +14,12 @@
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li>
-                            <a href="{{ route('logout') }}">
-                                <i class="fas fa-sign-out pull-right"></i> {{ __('views.backend.section.header.menu_0') }}
-                            </a>
-                        </li>
+                            <li>
+                                    <a href="{{ route('logout') }}">
+                                        <i class="fas fa-sign-out-alt"></i>Log out
+                                    </a>
+                                </li>
+                       
                         <li>
                                 <a href="{{ route('/') }}">
                                     <i class="fa fa-home pull-right"></i> Home

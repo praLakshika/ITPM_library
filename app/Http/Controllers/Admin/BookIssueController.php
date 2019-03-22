@@ -28,6 +28,32 @@ class BookIssueController extends Controller
         $Book_issues=Book_issue::all();
         return view('admin.book_issue.index', compact('Book_issues'));
     }
+    public function search_book_issue(Request $request)
+    {
+        $members = DB::table('member')
+        ->orWhere('name', 'like',  $request['search'] . '%')
+        ->get();
+        $member_id=null;
+        foreach($members as $member)
+        {
+            $member_id=$member->id;
+        }
+        $books = DB::table('book')
+        ->orWhere('bookname', 'like',  $request['search'] . '%')
+        ->get();
+        $book_id=null;
+        foreach($books as $book)
+        {
+            $book_id=$book->id;
+        }
+        
+        $Book_issues = DB::table('book_issue')
+        ->where('id', $request['search'])
+        ->orWhere('member_id', 'like', $member_id)
+        ->orWhere('book_id', 'like', $member_id)
+        ->get();
+        return view('admin.book_issue.index', compact('Book_issues'));
+    }
 
     /**
      * Show the form for creating a new resource.

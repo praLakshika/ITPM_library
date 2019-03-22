@@ -11,8 +11,10 @@
             </div>
             <div class="right-searchbar">
                 <!-- Search form -->
-                <form action="<?php echo e(route('admin.book_issue')); ?>" method="get" class="form-inline">
-                    <div class="form-group">
+                <form action="searchbookissue" method="post" class="form-inline">
+                        <?php echo e(csrf_field()); ?>
+
+                         <div class="form-group">
                         <input class="form-control" type="text" name="key" placeholder="Search" aria-label="Search" value="<?php echo e(isSet($key) ? $key : ''); ?>" />
                     </div>
                     <div class="form-group">

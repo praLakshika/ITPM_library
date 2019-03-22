@@ -15,7 +15,7 @@
                         <a href="<?php echo e(route('admin.book_category.add')); ?>" class="btn btn-primary">Add Book category</a>
                 <div class="right-searchbar">
                                 <!-- Search form -->
-                                <form action="search" method="post" class="form-inline">
+                                <form action="searchBook" method="post" class="form-inline">
                                         <?php echo e(csrf_field()); ?>
 
                                     <div class="form-group">

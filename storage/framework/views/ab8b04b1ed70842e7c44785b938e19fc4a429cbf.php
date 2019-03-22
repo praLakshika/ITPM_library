@@ -8,6 +8,13 @@
         <?php if(Session::has('message')): ?>
             <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
         <?php endif; ?>
+        <?php if(!$errors->isEmpty()): ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $errors->first(); ?>
+
+            </div>
+        <?php endif; ?>
+   
         <div class="form-group">
             <label for="book_category_name">Book category Name *</label>
             <input type="text" class="form-control" name="book_category_name" id="book_category_name" placeholder="Book category Name" value="<?php echo e(old('book_category_name')); ?>">

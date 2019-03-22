@@ -90,6 +90,16 @@ class FineCollectionController extends Controller
      */
     public function update(Request $request,Fine_fee $fine)
     {
+        $validatedData = [
+            'fee_per_day' => 'required|numeric|integer'
+            
+        ];
+        $customMessages = [
+            'fee_per_day.numeric' =>  'Book fine fee must be numeric',
+            'fee_per_day.integer' =>  'Book fine fee must be integer'
+        ];
+        $this->validate($request, $validatedData, $customMessages);
+
         $Books = DB::select('select * from fine_fee where id ='.$request['id']);
         foreach($Books as $Book)
           {

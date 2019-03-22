@@ -9,6 +9,12 @@
         @if(Session::has('message'))
             <div class="alert alert-danger">{{ Session::get('message') }}</div>
         @endif
+        @if (!$errors->isEmpty())
+            <div class="alert alert-danger" role="alert">
+                {!! $errors->first() !!}
+            </div>
+        @endif
+   
         <div class="form-group">
             <label for="book_category_name">Book category Name *</label>
             <input type="text" class="form-control" name="book_category_name" id="book_category_name" placeholder="Book category Name" value="{{ old('book_category_name') }}">

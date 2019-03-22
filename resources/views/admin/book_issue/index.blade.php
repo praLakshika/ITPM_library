@@ -12,8 +12,9 @@
             </div>
             <div class="right-searchbar">
                 <!-- Search form -->
-                <form action="{{ route('admin.book_issue') }}" method="get" class="form-inline">
-                    <div class="form-group">
+                <form action="searchbookissue" method="post" class="form-inline">
+                        {{ csrf_field() }}
+                         <div class="form-group">
                         <input class="form-control" type="text" name="key" placeholder="Search" aria-label="Search" value="{{isSet($key) ? $key : ''}}" />
                     </div>
                     <div class="form-group">
