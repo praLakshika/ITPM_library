@@ -133,7 +133,7 @@
                                     <div class="col-xs-12 col-sm-12 col-lg-4  ">
                                             <div class="panel panel-warning">
                                                     <div class="panel-heading ">
-                                <p style="text-align:center;"><img src="img/core-img/artificial.png" class="center" width="350" height="350"></p></div>
+                                <p style="text-align:center;"><img src="img/icons/library.png" class="center" width="350" height="350"></p></div>
                                             </div></div>  
                                 <div class="col-xs-12 col-sm-12 col-lg-8">
                                         <div class="panel panel-primary">
@@ -182,6 +182,8 @@
                             </div></div>
                             <br>
                 <br><br><br><br>
+                <br>
+    <br><br><br><br><br><br>
                             <div class="panel panel-danger">
                         
                                     {{-- <div class="panel-body"><p style="text-align:center;"><img src="img/core-img/artificial.png" class="center" width="800" height="420"></p></div> --}}

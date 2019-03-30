@@ -81,7 +81,7 @@ class BookController extends Controller
             'book_year' => 'required|numeric|integer',
             'fine_fee' => 'required|numeric|integer',
             'book_image' => 'required',
-            'checkid' => 'required'
+            'ids' => 'required'
             
         ];
         $customMessages = [
@@ -90,7 +90,7 @@ class BookController extends Controller
             'book_year.integer' =>  'Book year must be integer',
             'fine_fee.integer' =>  'Book fine fee must be integer',
             'book_image.integer' =>  'Book image must be required',
-            'checkid.required' =>  'Book category must be required'
+            'ids.required' =>  'Book category must be required'
         ];
         $this->validate($request, $validatedData, $customMessages);
 

@@ -42,8 +42,29 @@ class FineCollectionController extends Controller
     {
         return view('admin.fine_collection.fine_feeadd');
     }
+    public function searchfine(Request $request)
+    {
+        // $members = DB::table('member')
+        // ->orWhere('name', 'like', '%'. $request['search'] . '%')
+        // ->get();
+        // $member_id=null;
+        // foreach($members as $member)
+        // {
+        //     $member_id=$member->id;
+        // }
+        // $book_id=nul
+        
+        // $Book_issues = DB::table('book_issue')
+        // ->where('id', $request['search'])
+        // ->orWhere('member_id', 'like', $member_id)
+        // ->get();
+        $Book_fine_collection  = DB::table('book_fine_collection')
+        ->where('id', $request['key'])
+        ->get();
+        return view('admin.fine_collection.index', compact('Book_fine_collection'));
+    }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

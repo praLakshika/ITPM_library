@@ -61,15 +61,15 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="item active">
-          <img src="https://cdn-images-1.medium.com/max/1600/0*Ugp4QQOB6XvJwi-L" alt="Los Angeles" width="1800px" height="800px">
+          <img src="http://clipgoo.com/daut/as/f/a/appealing-home-library-design-with-brown-wooden-wall-bookshelf-fancy-building-a-leather-comfy-armchair-near-and_curved-bookshelf_home-decor_home-decorators-coupon-code-decor-liquidators-tuscan-christm.jpg" alt="Los Angeles" width="1800px" height="800px">
         </div>
   
         <div class="item">
-          <img src="https://focusonbelgium.be/sites/default/files/styles/big_article_image/public/ku_leuven_rob_stevens_1.jpg?itok=ccpdnhlx" alt="Chicago" width="1800px" height="800px">
+          <img src="https://d24fkeqntp1r7r.cloudfront.net/wp-content/uploads/2018/11/27195319/library-869061_1920.jpg" alt="Chicago" width="1800px" height="800px">
         </div>
       
         <div class="item">
-          <img src="https://aatvos.com/wp-content/uploads/2018/10/Aatvos_Koln-Kalk_library-social-inclusion-1.jpg" alt="New york" width="1800px" height="800px">
+          <img src="https://farm7.staticflickr.com/6204/6096943662_251c7be78c_o.jpg" alt="New york" width="1800px" height="800px">
         </div>
       </div>
   
@@ -91,15 +91,17 @@
     <div class="col-xs-12 col-sm-12  col-lg-4">
         <div class="panel panel-info ">
             <div class="panel-heading " >
-                <h4>Friday close...</h4>
-          <h4>Other days 9am - 5am</h4>
+                
+          <h4>All days 9am - 5am</h4>
+          
+          <h4>Poya day holiday</h4>
             </div>
       </div>
      </div> 
      <div class="col-xs-12 col-sm-12  col-lg-4">
         <div class="panel panel-info ">
             <div class="panel-heading " >
-                <h4>Email:-info@artificiallimbcare.lk</h4>
+                <h4>Email:-info@ardbookrenting.lk</h4>
                 <h4> Call Us:-<a href="tel:0713450257">071 345 0257</a> </h4>
           
             </div>
@@ -108,8 +110,8 @@
      <div class="col-xs-12 col-sm-12 col-lg-4">
         <div class="panel panel-info ">
             <div class="panel-heading " >
-                <h4>No 4, Mithrananda Mawatha,</h4> 
-                <h4>Kiribathgoda.<br></h4>
+                <h4>SLIIT</h4> 
+                <h4>Malabe.<br></h4>
             </div>
       </div>
      </div> 
@@ -119,46 +121,31 @@
       <div class="container">
           <br>
           <div class="well well-lg"><p style="text-align:center;">
-            <img src="img/icons/Services.png" alt="" width="75px" height="75px"></p>
+            <img src="img/icons/library.png" alt="" width="75px" height="75px"></p>
             <h2 align="center">Our Services</h2>
                  
             </div>
             <div class="col-xs-6 col-sm-6 col-lg-3">
+              </div>
+            <div class="col-xs-6 col-sm-6 col-lg-3">
               <div class="panel panel-success ">
                   <div class="panel-heading " >
                       <p style="text-align:center;"><i class="fa fa-wheelchair fa-3x"  aria-hidden="true"> </i></p>
-                       <h5 align="center">Orthosis care</h5>
+                       <h5 align="center">Book renting</h5>
                   </div>
             </div>
-           </div> 
+           </div>  
+          
            <div class="col-xs-6 col-sm-6 col-lg-3">
               
               <div class="panel panel-success ">
                   <div class="panel-heading " > 
                       <p style="text-align:center;"> <i class="fa fa-child fa-3x"  aria-hidden="true"> </i></p>
-                   <h5 align="center">Children care</h5></div>
+                   <h5 align="center">Online library</h5></div>
               </div>
             
           </div> 
-           <div class="col-xs-6 col-sm-6 col-lg-3">
-                <div class="panel panel-success ">
-                    <div class="panel-heading " > 
-                        <p style="text-align:center;"><i class="fa fa-blind fa-3x"  aria-hidden="true"> </i></p>
-                        <h5 align="center">Prosthesis care</h5>
-                      </div>
-                </div>
-            </div> 
-            <div class="col-xs-6 col-sm-6 col-lg-3">
-              
-                  <div class="panel panel-success ">
-                      <div class="panel-heading " > 
-                          <p style="text-align:center;"><i class="fa fa-hand-paper-o  fa-3x"  aria-hidden="true"> </i></p>
-                          <h5 align="center">Cosmetic  care</h5></div>
-                  </div>
-                
-              </div> 
-             
-                
+          
               </div>
                 
                 <div class="container">

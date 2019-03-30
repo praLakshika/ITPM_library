@@ -1,50 +1,49 @@
-@extends('layouts.welcome')
-@section('navigation')
+<?php $__env->startSection('navigation'); ?>
 <nav class="navbar navbar-inverse">
                 
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand active" href="{{ url('/') }}">ARD book renting</a>
+      <a class="navbar-brand active" href="<?php echo e(url('/')); ?>">ARD book renting</a>
     </div>
     <ul class="nav navbar-nav">
-      <li ><a href="{{ url('/') }}">{{ __('views.welcome.home') }}</a></li>
-      <li class="active"><a href="{{ url('/aboutus') }}">About Us</a></li>
-      <li > <a href="{{ url('/services') }}">Services</a></li>
-      <li >  <a href="{{ url('/contact') }}">Contact</a></li>
+      <li ><a href="<?php echo e(url('/')); ?>"><?php echo e(__('views.welcome.home')); ?></a></li>
+      <li class="active"><a href="<?php echo e(url('/aboutus')); ?>">About Us</a></li>
+      <li > <a href="<?php echo e(url('/services')); ?>">Services</a></li>
+      <li >  <a href="<?php echo e(url('/contact')); ?>">Contact</a></li>
       
      
       
     </ul>
     <ul class="nav navbar-nav navbar-right">
-            @if (Route::has('login'))
-            @if (!Auth::check())
-                @if(config('auth.users.registration'))
-                    {{-- <a href="{{ url('/register') }}">{{ __('views.welcome.register') }}</a> --}}
-                @endif
-                <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            @else
-                @if(auth()->user()->usertype == 'administrator'){{--->hasRole('administrator')--}}
-                <li> <a href="{{ url('/admin') }}">{{ __('views.welcome.admin') }}</a></li>
-                @elseif(auth()->user()->usertype == 'Receptionist')
-                <li> <a href="{{ url('/receptionist') }}">{{ __('views.welcome.admin') }}</a></li>
-                @elseif(auth()->user()->usertype == 'PNO')
-                <li>  <a href="{{ url('/pno') }}">{{ __('views.welcome.admin') }}</a></li>
-                @elseif(auth()->user()->usertype == 'Director')
-                <li>  <a href="{{ url('/director') }}">{{ __('views.welcome.admin') }}</a></li>
-                @elseif(auth()->user()->usertype == 'Patient')
-                <li>  <a href="{{ url('/patient') }}">{{ __('views.welcome.admin') }}</a></li>
-                @elseif(auth()->user()->usertype == 'Doctor')
-                <li>  <a href="{{ url('/doctor') }}">{{ __('views.welcome.admin') }}</a></li>
-                @endif
-                <li><a href="{{ url('/logout') }}"><span class="glyphicon glyphicon-log-out"></span>{{ __('views.welcome.logout') }}</a></li>
-            @endif
-        @endif
+            <?php if(Route::has('login')): ?>
+            <?php if(!Auth::check()): ?>
+                <?php if(config('auth.users.registration')): ?>
+                    
+                <?php endif; ?>
+                <li><a href="<?php echo e(url('/login')); ?>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <?php else: ?>
+                <?php if(auth()->user()->usertype == 'administrator'): ?>
+                <li> <a href="<?php echo e(url('/admin')); ?>"><?php echo e(__('views.welcome.admin')); ?></a></li>
+                <?php elseif(auth()->user()->usertype == 'Receptionist'): ?>
+                <li> <a href="<?php echo e(url('/receptionist')); ?>"><?php echo e(__('views.welcome.admin')); ?></a></li>
+                <?php elseif(auth()->user()->usertype == 'PNO'): ?>
+                <li>  <a href="<?php echo e(url('/pno')); ?>"><?php echo e(__('views.welcome.admin')); ?></a></li>
+                <?php elseif(auth()->user()->usertype == 'Director'): ?>
+                <li>  <a href="<?php echo e(url('/director')); ?>"><?php echo e(__('views.welcome.admin')); ?></a></li>
+                <?php elseif(auth()->user()->usertype == 'Patient'): ?>
+                <li>  <a href="<?php echo e(url('/patient')); ?>"><?php echo e(__('views.welcome.admin')); ?></a></li>
+                <?php elseif(auth()->user()->usertype == 'Doctor'): ?>
+                <li>  <a href="<?php echo e(url('/doctor')); ?>"><?php echo e(__('views.welcome.admin')); ?></a></li>
+                <?php endif; ?>
+                <li><a href="<?php echo e(url('/logout')); ?>"><span class="glyphicon glyphicon-log-out"></span><?php echo e(__('views.welcome.logout')); ?></a></li>
+            <?php endif; ?>
+        <?php endif; ?>
         
       </ul>
   </div>
 </nav>
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
         
         <div class="container">
@@ -129,10 +128,11 @@
                   <div class="container">
                         <div class="panel panel-danger">
     
-                            {{-- <div class="panel-body"><p style="text-align:center;"><img src="img/core-img/artificial.png" class="center" width="800" height="420"></p></div> --}}
+                            
                             <div class="panel-heading"> <div class="col-12 col-lg-5">|| Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved  by ARD book renting.<br></div>
                             <div  align="right"> Web Design by<a href="https://www.facebook.com/team176sri/" target="_blank">Team 176</a></div>
                         </div>
                       </div></div>
                   
-  @endsection
+  <?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.welcome', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

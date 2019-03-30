@@ -111,6 +111,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('book_issue/book_issue_member','BookIssueController@book_issue_member');
 
     //fine collection
+    
+    Route::post('searchfine', 'FineCollectionController@searchfine');
     Route::get('fine_collection','FineCollectionController@index')->name('fine_collection');
     Route::get('fine_fee/{fine}', 'FineCollectionController@edit')->name('fine_fee.edit');
     
@@ -119,7 +121,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('book_issue/return/book_fine_collection','FineCollectionController@store');
     Route::post('fine_fee/fine_feeupdate','FineCollectionController@update');
 
-
+   
     
     //Author addauthor
     Route::get('author','AuthorController@index')->name('author');

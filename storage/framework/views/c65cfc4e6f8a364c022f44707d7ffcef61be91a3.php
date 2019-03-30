@@ -12,8 +12,8 @@
 
             </div>
         <?php endif; ?>
-        <?php if(!$message->isEmpty()): ?>
-            <div class="alert alert-danger"><?php echo e($message); ?></div>
+        <?php if(Session::has('message')): ?>
+            <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
         <?php endif; ?>
         <?php
         use Illuminate\Support\Facades\DB;
