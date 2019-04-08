@@ -14,6 +14,8 @@ use App\Models\Fine_fee;
 
 use Validator;
 use Illuminate\Support\Facades\DB;
+
+use File;
 class BookController extends Controller
 {
     /**
@@ -82,7 +84,6 @@ class BookController extends Controller
             'fine_fee' => 'required|numeric|integer',
             'book_image' => 'required',
             'ids' => 'required'
-            
         ];
         $customMessages = [
             'name.regex' => 'Name cannot contain numbers and special characters',
@@ -170,43 +171,82 @@ class BookController extends Controller
     {
         $Books = DB::select('select * from book where id ='.$request['id']);
         
-        if ($request->get('book_image')===null)
+        if ($request->hasFile('book_image'))
             {
-                
-          foreach($Books as $Book)
-          {
-              $sname=$Book->bookname;
-              if(($sname==$request['name']) ) 
-              {
-              $message = 'Nothing to update';
-              return redirect()->intended(route('admin.book.edit',[$request->id]))->with('message', $message);
-              }
-              else
-              {
-                DB::table('book')
-                ->where('id', $request['id'])
-                ->update(['bookname' => $request['name']]);
+                $file="panding";
+                $lastid= "panding";
+                foreach($Books as $Book)
+                {  
+                    $file=$Book->book_pic;
+                    $lastid= $Book->id;
+                }
+               
+                $sname=$Book->bookname;
+                if(($sname==$request['name']) ) 
+                {
+                    $filename= public_path().'/image/book/pic/'.$file;
+                    File::delete($filename);
+    
+                    $file=$request ->file('book_image');
+    
+                    $bookVals = DB::select('select * from book ORDER BY id DESC LIMIT 1');
+                    $type=$file->guessExtension();
+                    $lastid = $request['id'];
+                    
+                    $pic_name=$lastid."book.".$type;
+                    $file->move('image/book/pic',$pic_name);
+            
+                    DB::table('book')
+                    ->where('id', $request['id'])
+                    ->update(['book_pic' => $pic_name]);
             
                 return view('admin.book.success');
-              }
-          }
+             }
+                else
+                {
+                   
+                    $filename= public_path().'/image/book/pic/'.$file;
+                    File::delete($filename);
+    
+                    $file=$request ->file('book_image');
+    
+                    $bookVals = DB::select('select * from book ORDER BY id DESC LIMIT 1');
+                    $type=$file->guessExtension();
+                    $lastid = $request['id'];
+                    
+                    $pic_name=$lastid."book.".$type;
+                    $file->move('image/book/pic',$pic_name);
+            
+                  DB::table('book')
+                  ->where('id', $request['id'])
+                  ->update(['bookname' => $request['name'],'book_pic' => $pic_name]);
+              
+                  return view('admin.book.success');
+                }
+                
         }
 
-       $file=$request ->file('book_image');
+        else
+        {
 
-       return $file;
-        $bookVals = DB::select('select * from book ORDER BY id DESC LIMIT 1');
-        $type=$file->guessExtension();
-        $lastid = $request['id'];
-        
-        $pic_name=$lastid."book.".$type;
-        $file->move('image/book/pic',$pic_name);
-
-        DB::table('book')
-        ->where('id', $request['id'])
-        ->update(['bookname' => $request['name'],'book_pic' => $pic_name]);
-
-    return view('admin.book.success');
+            foreach($Books as $Book)
+            {
+                $sname=$Book->bookname;
+                if(($sname==$request['name']) ) 
+                {
+                $message = 'Nothing to update';
+                return redirect()->intended(route('admin.book.edit',[$request->id]))->with('message', $message);
+                }
+                else
+                {
+                  DB::table('book')
+                  ->where('id', $request['id'])
+                  ->update(['bookname' => $request['name']]);
+              
+                  return view('admin.book.success');
+                }
+            }
+}
     }
 
     /**

@@ -1,58 +1,45 @@
 @extends('admin.layouts.admin')
 
-@section('title',"Edit Employee", "Employee") 
+@section('title',"Author Management") 
 
 @section('content')
 <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-      </div>
+<form action="updateauthor" method="post" enctype="multipart/form-data">
+    {{ csrf_field() }}
+    @if (!$errors->isEmpty())
+        <div class="alert alert-danger" role="alert">
+            {!! $errors->first() !!}
+        </div>
     @endif
-
-    {{ Form::open(['route'=>['admin.employees.update', $employee->id],'method' => 'put','class'=>'form-horizontal form-label-left', 'enctype'=>"multipart/form-data"]) }}
-        {{-- <div class="form-group">
-            @if ("/storage/public/images/{{ $employee->avator }}")
-                <img src="{{ $employee->avator }}">
-            @else
-                <p>No image found</p>
-            @endif
-            <label for="avator">Current Avator: {{ $employee->avator }}</label>
-            <input type="file" class="form-control-file" id="avator" name="avator" placeholder="" value="{{ $employee->avator }}">
-        </div> --}}
+    
+    @if(Session::has('message'))
+        <div class="alert alert-danger">{{ Session::get('message') }}</div>
+    @endif
         <div class="form-group">
-          <label for="inputName">Name</label>
-          <input type="text" class="form-control" id="inputName" name="inputName" placeholder="" value="{{ $employee->name }}">
+          <label for="name">Author name *</label>
+          <input type="text" class="form-control" name="name" id="name" value="{{ $Book_authors->name }}">
         </div>
         <div class="form-group">
-            {!! Form::label('email', 'Email') !!}
-            {!! Form::email('email',  $employee->email, ['class' => 'form-control', 'placeholder'=>'Valid email']) !!}
+            <label for="email">Author email </label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="{{ $Book_authors->email }}">
         </div>
         <div class="form-group">
-            {!! Form::label('contactNo', 'Contact Number') !!}
-            {!! Form::text('contactNo',  $employee->contactNo, ['class' => 'form-control', 'placeholder'=>'Mobile number']) !!}
+            <label for="contact">Author contact </label>
+            <input type="text" class="form-control" name="contact" id="contact" placeholder="Contact" value="{{ $Book_authors->contact }}">
         </div>
         <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder=""  value="{{ $employee->address }}">
+            <label for="author_address">Address *</label>
+            <textarea class="form-control" name="author_address" id="author_address" cols="30" rows="10" placeholder="Address " >{{ $Book_authors->address }}</textarea>
         </div>
         <div class="form-group">
-          <label for="empType">Employee Type</label>
-          <select id="empType" name="empType" class="form-control">
-            <option @if($employee->employeeType == 'Director') selected @endif>Director</option>
-            <option @if($employee->employeeType == 'Receptionist') selected @endif>Receptionist</option>
-            <option @if($employee->employeeType == 'PNO') selected @endif>PNO</option>
-          </select>
+            <label for="author_image">Author picture *</label>
+            <input type="file" class="form-control" name="author_image" id="author_image" >
         </div>
-        <a class="btn btn-danger" href="{{ route('admin.employees') }}"> {{ __('views.admin.users.edit.cancel') }}</a>
-        {{-- <button type="submit" class="btn btn-primary">Clear</button> --}}
-        <button type="submit" class="btn btn-success">Update</button>
-      {{ Form::close() }}
-    </div> 
+        <input type="hidden" id="id" name="id" value="{{ $Book_authors->id }}">
+        <a href="{{ route('admin.author') }}" class="btn btn-danger">Cancel</a>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
 @endsection
 
 @section('styles')

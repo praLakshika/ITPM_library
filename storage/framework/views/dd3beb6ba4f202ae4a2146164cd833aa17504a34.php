@@ -56,8 +56,8 @@
             <input type="checkbox"name="ids[]" value=<?php echo e($book_category->id); ?> > <span style="font-size: 100%; " class="label label-primary"><?php echo e($book_category->book_category_name); ?></span>
              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
         </div>
-        <a href="<?php echo e(route('admin.book')); ?>" class="btn btn-danger">Cancel</a>
-        <a href="<?php echo e(route('admin.book.add')); ?>" class="btn btn-primary">Clear</a>
+        <a href="<?php echo e(route('admin.online_book')); ?>" class="btn btn-danger">Cancel</a>
+        <a href="<?php echo e(route('admin.online_book.add')); ?>" class="btn btn-primary">Clear</a>
         <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>

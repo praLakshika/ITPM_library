@@ -11,6 +11,8 @@
                     use Illuminate\Support\Facades\DB;
                     $email=auth()->user()->email;
                     $IDs = DB::table('book_author')->where('id', $bookonlines->authorid)->get();
+                    $onlinebookcats = DB::table('onlinebookcat')->where('bookid', $bookonlines->id)->get();
+                    
                     $author_name = "pandding";
                         foreach($IDs as $ID)
                         {
@@ -46,6 +48,21 @@
                 <th>Book published year</th>
                 <td>
                     {{ ($bookonlines->book_published_year)}} 
+                </td>
+            </tr>
+            <tr>
+                <th>Book categorys</th>
+                <td>
+                    @foreach ($onlinebookcats as $onlinebookcat)
+                    @php
+                     $onlinebookcates = DB::table('book_category')->where('id', $onlinebookcat->book_cat_id)->get();
+                    
+                    @endphp
+                     @foreach ($onlinebookcates as $onlinebookcate)
+                     <span style="font-size: 100%; " class="label label-primary"> {{ ($onlinebookcate->book_category_name)}} </span>
+                   
+                    @endforeach
+                    @endforeach
                 </td>
             </tr>
             </tbody>

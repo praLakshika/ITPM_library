@@ -58,13 +58,13 @@
                         </div>
                     </div>
                     <div class="dcard-body text-center">
-                        <a class="btn btn-xs btn-primary" href="{{ route('admin.member',[$Book_author->id]) }}">
+                        <a class="btn btn-xs btn-primary" href="{{ route('admin.author.show',[$Book_author->id]) }}">
                             <i class="fa fa-eye"></i>
                         </a>
-                        <a class="btn btn-xs btn-info" href="{{  route('admin.member',[$Book_author->id]) }}">
+                        <a class="btn btn-xs btn-info" href="{{  route('admin.author.edit',[$Book_author->id]) }}">
                             <i class="fa fa-pencil"></i>
                         </a>
-                        <a class="btn btn-xs btn-danger" href="{{ route('admin.member.delete',[$Book_author->id]) }}">
+                        <a class="btn btn-xs btn-danger" href="{{ route('admin.author.delete',[$Book_author->id]) }}">
                             <i class="fa fa-trash"></i>
                         </a>
                     </div>

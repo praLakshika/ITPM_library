@@ -10,6 +10,8 @@
                     use Illuminate\Support\Facades\DB;
                     $email=auth()->user()->email;
                     $IDs = DB::table('book_author')->where('id', $bookonlines->authorid)->get();
+                    $onlinebookcats = DB::table('onlinebookcat')->where('bookid', $bookonlines->id)->get();
+                    
                     $author_name = "pandding";
                         foreach($IDs as $ID)
                         {
@@ -45,6 +47,21 @@
                 <th>Book published year</th>
                 <td>
                     <?php echo e(($bookonlines->book_published_year)); ?> 
+                </td>
+            </tr>
+            <tr>
+                <th>Book categorys</th>
+                <td>
+                    <?php $__currentLoopData = $onlinebookcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $onlinebookcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php
+                     $onlinebookcates = DB::table('book_category')->where('id', $onlinebookcat->book_cat_id)->get();
+                    
+                    ?>
+                     <?php $__currentLoopData = $onlinebookcates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $onlinebookcate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                     <span style="font-size: 100%; " class="label label-primary"> <?php echo e(($onlinebookcate->book_category_name)); ?> </span>
+                   
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </td>
             </tr>
             </tbody>

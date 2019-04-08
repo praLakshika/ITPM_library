@@ -69,12 +69,21 @@
                         <td><?php echo e($Book_issue->getdate); ?></td>
                         <td><?php echo e($Book_issue->book_issued_day); ?></td>
                         <td>
+                            <?php if( ($Book_issue->book_returned_day)==null): ?>
+                                
                                 <a class="btn btn-xs btn-primary" href="<?php echo e(route('admin.book_issue.show',[$Book_issue->id])); ?>">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a class="btn btn-xs btn-info" href="<?php echo e(route('admin.book_issue.return',[$Book_issue->id])); ?>">
-                                        <i class="fas fa-undo"></i>
-                                    </a>
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a class="btn btn-xs btn-info" href="<?php echo e(route('admin.book_issue.return',[$Book_issue->id])); ?>">
+                                    <i class="fas fa-undo"></i>
+                                </a>
+                            <?php else: ?>   
+                            <a class="btn btn-xs btn-primary" href="<?php echo e(route('admin.book_issue.show',[$Book_issue->id])); ?>">
+                                <i class="fa fa-eye"></i>
+                            </a>
+
+                            <?php endif; ?>
+                           
                         </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 

@@ -1,4 +1,4 @@
-<?php $__env->startSection('title',"Book Management"); ?> 
+<?php $__env->startSection('title',"Online Book Management"); ?> 
 
 <?php $__env->startSection('content'); ?>
 <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -16,15 +16,19 @@
         <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
     <?php endif; ?>
         <div class="form-group">
-                <label for="name">Book name *</label>
+                <label for="name">Book Online name *</label>
                 <input type="text" class="form-control" name="name" id="name" value="<?php echo e($books->bookname); ?>">
               </div>
         <div class="form-group">
-            <label for="book_image">Book picture *</label>
+            <label for="book_image">Book Online picture *</label>
             <input type="file" class="form-control" name="book_image" id="book_image" >
         </div>
+        <div class="form-group">
+            <label for="book_PDF">Book Online PDF *</label>
+            <input type="file" class="form-control" name="book_PDF" id="book_PDF" >
+        </div>
         <input type="hidden" id="id" name="id" value="<?php echo e($books->id); ?>">
-        <a href="<?php echo e(route('admin.book')); ?>" class="btn btn-danger">Cancel</a>
+        <a href="<?php echo e(route('admin.online_book')); ?>" class="btn btn-danger">Cancel</a>
         <button type="submit" class="btn btn-primary">Update</button>
       </form>
     </div>

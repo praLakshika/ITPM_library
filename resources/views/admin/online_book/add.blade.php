@@ -56,8 +56,8 @@
             <input type="checkbox"name="ids[]" value={{$book_category->id}} > <span style="font-size: 100%; " class="label label-primary">{{$book_category->book_category_name}}</span>
              @endforeach 
         </div>
-        <a href="{{ route('admin.book') }}" class="btn btn-danger">Cancel</a>
-        <a href="{{ route('admin.book.add') }}" class="btn btn-primary">Clear</a>
+        <a href="{{ route('admin.online_book') }}" class="btn btn-danger">Cancel</a>
+        <a href="{{ route('admin.online_book.add') }}" class="btn btn-primary">Clear</a>
         <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-<form action="updatebook" method="post">
+<form action="updatebook" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     @if (!$errors->isEmpty())
         <div class="alert alert-danger" role="alert">

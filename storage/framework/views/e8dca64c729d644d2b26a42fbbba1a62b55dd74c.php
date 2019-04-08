@@ -1,50 +1,49 @@
-@extends('admin.layouts.admin')
-@section('title', "Author Management")
+<?php $__env->startSection('title', "Author Management"); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <table class="table table-striped table-hover">
             <tbody>
             <tr>
                 <th>Author Image</th>
                 <td>
-                        <img  id="myImg" onclick="displayIMG(this.id)" height="200" width="200" src="\image\author\pic\{{$Book_authors->pic}}" alt={{ $Book_authors->name }}>{{-- {{ $employee->avatar }} --}}
+                        <img  id="myImg" onclick="displayIMG(this.id)" height="200" width="200" src="\image\author\pic\<?php echo e($Book_authors->pic); ?>" alt=<?php echo e($Book_authors->name); ?>>
                         <div id="myModal" class="modal">
                                 <span class="close">&times;</span>
                             <img class="modal-content" id="img01">
                             <div id="caption"></div>
                           </div>
-                        {{-- <img height="200" width="200" src="\image\service\item\{{$Services->pic}}" class="user-profile-image"></td> --}}
+                        
             </tr>
             
             <tr>
                 <th>Author name</th>
-                <td>{{ $Book_authors->name }}</td>
+                <td><?php echo e($Book_authors->name); ?></td>
             </tr>
             
             <tr>
                 <th>Author birthday</th>
-                <td>{{ $Book_authors->birthday }}</td>
+                <td><?php echo e($Book_authors->birthday); ?></td>
             </tr>
             
             <tr>
                 <th>Author address</th>
-                <td>{{ $Book_authors->address }}</td>
+                <td><?php echo e($Book_authors->address); ?></td>
             </tr>
             
             <tr>
                 <th>Author email</th>
-                <td>{{ $Book_authors->email }}</td>
+                <td><?php echo e($Book_authors->email); ?></td>
             </tr>
             
             <tr>
                 <th>Author contact</th>
-                <td>{{ $Book_authors->contact }}</td>
+                <td><?php echo e($Book_authors->contact); ?></td>
             </tr>
             </tbody>
         </table>
-        <a href="{{ route('admin.author') }}" class="btn btn-danger">Online Book home</a>
-        <a class="btn btn-info" href="{{ route('admin.author.edit',[$Book_authors->id]) }}">Edit</a>
+        <a href="<?php echo e(route('admin.author')); ?>" class="btn btn-danger">Online Book home</a>
+        <a class="btn btn-info" href="<?php echo e(route('admin.author.edit',[$Book_authors->id])); ?>">Edit</a>
     </div>
     <script>
             // Get the modal
@@ -69,4 +68,5 @@
             }
             </script>
             
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

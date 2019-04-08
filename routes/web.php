@@ -97,7 +97,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('book_issue','BookIssueController@index')->name('book_issue');
     Route::get('book_issue/add','BookIssueController@create')->name('book_issue.add');
     Route::post('book_issue/addbook/addbook_issue', 'BookIssueController@store')->name('book_issue.addbook');
-    Route::get('book_issue/{book}', 'BookIssueController@show')->name('book_issue.show');
+    Route::get('book_issue/{Book_issue}', 'BookIssueController@show')->name('book_issue.show');
     Route::get('book_issue/return/{Book_issue}', 'BookIssueController@return')->name('book_issue.return');
      Route::post('book_issue/addbook/book_issue_book', 'BookIssueController@book_issue_book')->name('book_issue.addbook');
     Route::post('book_issue/addbook/book_issue_add', 'BookIssueController@book_issue_add')->name('book_issue.addbook.book_issue_add');
@@ -127,7 +127,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('author','AuthorController@index')->name('author');
     Route::get('author/add', 'AuthorController@create')->name('author.add');
     Route::post('author/addauthor', 'AuthorController@store')->name('author.store');
+
+    Route::get('author/{Book_author}', 'AuthorController@show')->name('author.show');
+    Route::get('author/edit/{Book_author}', 'AuthorController@edit')->name('author.edit');
+    
+    Route::get('author/delete/{Book_author}', 'AuthorController@destroy')->name('author.delete');
+    Route::post('author/delete/deleteauthor','AuthorController@sedelete');
+
+    Route::post('searchBook', 'AuthorController@searchBook')->name('book.searchBook');
    
+    Route::post('author/edit/updateauthor','AuthorController@update');
     // Dashboard
     Route::get('/', 'DashboardController@index')->name('dashboard');
    

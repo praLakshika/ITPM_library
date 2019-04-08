@@ -71,6 +71,17 @@ class MemberController extends Controller
         $Member->address=$request->get('address');
         $Member->save();
 
+        $user = User::create([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('nic')),
+            'confirmation_code' => Uuid::uuid4(),
+            'confirmed' => true,
+            'usertype' => 'Patient'
+            ]);
+            // assign the role to a user role.
+            $role = Role::findOrFail(2);
+            $user->roles()->attach($role);
         return view('admin.member.success');
     }
 

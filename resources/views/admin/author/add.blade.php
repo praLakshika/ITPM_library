@@ -42,7 +42,7 @@
         <div class="form-group">
             <label for="author_address">Address *</label>
             <textarea class="form-control" name="author_address" id="author_address" cols="30" rows="10" placeholder="Address " >{{ old('author_address') }}</textarea>
-          </div>
+        </div>
         
         <a href="{{ route('admin.author') }}" class="btn btn-danger">Cancel</a>
         <a href="{{ route('admin.author.add') }}" class="btn btn-primary">Clear</a>

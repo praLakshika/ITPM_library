@@ -69,12 +69,21 @@
                         <td>{{ $Book_issue->getdate }}</td>
                         <td>{{ $Book_issue->book_issued_day }}</td>
                         <td>
+                            @if ( ($Book_issue->book_returned_day)==null)
+                                
                                 <a class="btn btn-xs btn-primary" href="{{ route('admin.book_issue.show',[$Book_issue->id]) }}">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a class="btn btn-xs btn-info" href="{{  route('admin.book_issue.return',[$Book_issue->id]) }}">
-                                        <i class="fas fa-undo"></i>
-                                    </a>
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a class="btn btn-xs btn-info" href="{{  route('admin.book_issue.return',[$Book_issue->id]) }}">
+                                    <i class="fas fa-undo"></i>
+                                </a>
+                            @else   
+                            <a class="btn btn-xs btn-primary" href="{{ route('admin.book_issue.show',[$Book_issue->id]) }}">
+                                <i class="fa fa-eye"></i>
+                            </a>
+
+                            @endif
+                           
                         </td>
                     </tr>
                 @endforeach 

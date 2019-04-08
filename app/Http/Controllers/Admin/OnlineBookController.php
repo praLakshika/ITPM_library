@@ -127,53 +127,169 @@ class OnlineBookController extends Controller
     public function update(Request $request, Online_library $bookonline)
     {
         $Booksonline = DB::select('select * from online_library where id ='.$request['id']);
-        if ($request->get('book_image')===null)
+        $file="panding";
+        $lastid= "panding";
+        $pic= "panding";
+        $sname= "panding";
+        foreach($Booksonline as $Book)
+        {
+        $file=$Book->pdf_doc;
+        $lastid= $Book->id;
+        $pic= $Book->book_pic;
+        $sname=$Book->bookname;
+        }
+        if ($request->hasFile('book_image'))
+        {
+            if ($request->hasFile('book_PDF'))
             {
-                if ($request->get('book_PDF')===null)
-                { 
-                foreach($Booksonline as $Book)
+                if(($sname==$request['name']) ) 
                 {
-                    $sname=$Book->bookname;
-                    if(($sname==$request['name']) ) 
-                    {
-                    $message = 'Nothing to update';
-                    return redirect()->intended(route('admin.online_book.edit',[$request->id]))->with('message', $message);
-                    }
-                    else
-                    {
-                        DB::table('online_library')
-                        ->where('id', $request['id'])
-                        ->update(['bookname' => $request['name']]);
-                    return view('admin.online_book.success');
-                    }
+                $filename= public_path().'/image/onlineBook/pdf/'.$file;
+                File::delete($filename);
+
+                $filename= public_path().'/image/onlineBook/pic/'.$pic;
+                File::delete($filename);
+
+                $file="panding";
+                $pdf_name="panding";
+                $file=$request ->file('book_PDF');
+                $type=$file->guessExtension();
+                $pdf_name=$lastid."onlineBookpdf.".$type;
+                $file->move('image/onlineBook/pdf',$pdf_name);
+
+                $pic_name="panding";
+                $file=$request ->file('book_image');
+                $type=$file->guessExtension();
+                $pic_name=$lastid."onlineBook.".$type;
+                $file->move('image/onlineBook/pic',$pic_name);
+
+                DB::table('online_library')
+                    ->where('id', $request['id'])
+                    ->update(['pdf_doc' => $pdf_name,'book_pic' => $pic_name]);
+                    $message = 'Update  book picture and PDF document';
+                    return view('admin.online_book.success',['messages' => $message]);
                 }
-                }
-                else
-                {
-                    $file="panding";
-                    $lastid= "panding";
-                    foreach($Booksonline as $Book)
-                    {
-                    $file=$Book->pdf_doc;
-                    $lastid= $Book->id;
-                    }
+                else{
                     $filename= public_path().'/image/onlineBook/pdf/'.$file;
                     File::delete($filename);
-                    
-
+    
+                    $filename= public_path().'/image/onlineBook/pic/'.$pic;
+                    File::delete($filename);
+    
                     $file="panding";
                     $pdf_name="panding";
                     $file=$request ->file('book_PDF');
-                    $type=time() . '.' .$file->guessExtension();
+                    $type=$file->guessExtension();
                     $pdf_name=$lastid."onlineBookpdf.".$type;
                     $file->move('image/onlineBook/pdf',$pdf_name);
-
-                    DB::table('book')
+    
+                    $pic_name="panding";
+                    $file=$request ->file('book_image');
+                    $type=$file->guessExtension();
+                    $pic_name=$lastid."onlineBook.".$type;
+                    $file->move('image/onlineBook/pic',$pic_name);
+    
+                    DB::table('online_library')
                         ->where('id', $request['id'])
-                        ->update(['bookname' => $request['name']]);
-                    return view('admin.online_book.success');
-                    
+                        ->update(['bookname' => $request['name'],'pdf_doc' => $pdf_name,'book_pic' => $pic_name]);
+                        $message = 'Update book name, book picture and PDF document';
+                        return view('admin.online_book.success',['messages' => $message]);
                 }
+            }
+            else
+            {
+                if(($sname==$request['name']) ) 
+                {
+                    $filename= public_path().'/image/onlineBook/pic/'.$pic;
+                File::delete($filename);
+
+
+                $pic_name="panding";
+                $file=$request ->file('book_image');
+                $type=$file->guessExtension();
+                $pic_name=$lastid."onlineBook.".$type;
+                $file->move('image/onlineBook/pic',$pic_name);
+
+                DB::table('online_library')
+                    ->where('id', $request['id'])
+                    ->update(['book_pic' => $pic_name]);
+                    $message = 'Update only book picture ';
+                    return view('admin.online_book.success',['messages' => $message]);
+                }
+                else{
+                $filename= public_path().'/image/onlineBook/pic/'.$pic;
+                File::delete($filename);
+
+
+                $pic_name="panding";
+                $file=$request ->file('book_image');
+                $type=$file->guessExtension();
+                $pic_name=$lastid."onlineBook.".$type;
+                $file->move('image/onlineBook/pic',$pic_name);
+
+                DB::table('online_library')
+                    ->where('id', $request['id'])
+                    ->update(['bookname' => $request['name'],'book_pic' => $pic_name]);
+                    $message = 'Update book name and book picture ';
+                    return view('admin.online_book.success',['messages' => $message]);
+            }
+        }
+        }
+        else if($request->hasFile('book_PDF'))
+        {
+            if(($sname==$request['name']) ) 
+            {
+                
+                $filename= public_path().'/image/onlineBook/pdf/'.$file;
+                File::delete($filename);
+
+                $file="panding";
+                $pdf_name="panding";
+                $file=$request ->file('book_PDF');
+                $type=$file->guessExtension();
+                $pdf_name=$lastid."onlineBookpdf.".$type;
+                $file->move('image/onlineBook/pdf',$pdf_name);
+
+
+                DB::table('online_library')
+                    ->where('id', $request['id'])
+                    ->update(['pdf_doc' => $pdf_name]);
+                    $message = 'Update only PDF document';
+                    return view('admin.online_book.success',['messages' => $message]);
+            }
+            else{
+             
+                    $filename= public_path().'/image/onlineBook/pdf/'.$file;
+                    File::delete($filename);
+    
+                    $file="panding";
+                    $pdf_name="panding";
+                    $file=$request ->file('book_PDF');
+                    $type=$file->guessExtension();
+                    $pdf_name=$lastid."onlineBookpdf.".$type;
+                    $file->move('image/onlineBook/pdf',$pdf_name);
+    
+    
+                    DB::table('online_library')
+                        ->where('id', $request['id'])
+                        ->update(['bookname' => $request['name'],'pdf_doc' => $pdf_name]);
+                        $message = 'Update book name and PDF document';
+                        return view('admin.online_book.success',['messages' => $message]);
+                           
+            }
+        }
+        else if(($sname==$request['name']) ) 
+            {
+            $message = 'Nothing to update';
+            return redirect()->intended(route('admin.online_book.edit',[$request->id]))->with('message', $message);
+            }
+            else
+            {
+                DB::table('online_library')
+                ->where('id', $request['id'])
+                ->update(['bookname' => $request['name']]);
+                $message = 'Update only book name';
+                return view('admin.online_book.success',['messages' => $message]);
             }
         
     }

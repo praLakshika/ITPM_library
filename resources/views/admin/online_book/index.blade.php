@@ -47,18 +47,17 @@
                     <div class="dcard">
                         <div class="row">
                             <div class="dcard-header">
-                                <div class="dcard-body text-center" style="font-size: larger; color: black">
+                                <div class="dcard-body text-center bg-primary" style="font-size: larger; color: white">
                                     <span class="dcard-title ">{{  $Online_library->bookname}}</span><br />
                                     <span class="dcard-title ">{{ $author_name }}</span><br />
                                 </div>
                             <br/>
-                                <div class="dcard-body text-center">
+                            <div class="card bg-info text-white">
+                                <div class="dcard-body text-center bg-info">
                                         <img src="\image\onlineBook\pic\{{ $Online_library->book_pic }}" alt="Pic" height="90" width="90"class="img-circle">
                                      </div>
                                 {{-- <span class="card-img">{{ HTML::image('img/nickfrost.jpg', 'Pic') }}</span> --}}
     
-                            </div>
-                        </div>
                         <div class="dcard-body text-center">
                                 <a class="btn btn-xs btn-primary" href="{{ route('admin.online_book.show',[$Online_library->id]) }}">
                                         <i class="fa fa-eye"></i>
@@ -72,6 +71,11 @@
                         </div>
                     </div>
                 </div>
+                    
+                </div>
+                </div>
+            </div>
+    <div class="col-xs-1 col-sm-1"></div>
                 
             @endforeach
         <div class="pull-right">

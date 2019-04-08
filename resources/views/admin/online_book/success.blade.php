@@ -10,12 +10,20 @@
                         <div class="modal-header">
                             <div class="icon-box">
                                 <i class="fa fa-trash"></i>
-                            </div>				
+                            </div>
+                            
+                                @if(Session::has('message'))
+                                <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                            @endif				
                             <h4 class="modal-title">Success</h4>	
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
+                        
                         <div class="modal-body">
                             <p>Success done your job online book Management</p>
+                            @if($messages!=null)
+                            <div class="alert alert-danger">{{  $messages }}</div>
+                            @endif	
                         </div>
                         <div class="modal-footer">
                         <a href="/admin/online_book" class="btn btn-primary">Ok</a>

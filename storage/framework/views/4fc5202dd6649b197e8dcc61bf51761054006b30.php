@@ -1,11 +1,10 @@
-@extends('admin.layouts.admin')
-@section('title', "Online Book Management")
+<?php $__env->startSection('title', "Online Book Management"); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <table class="table table-striped table-hover">
             <tbody>
-                    @php
+                    <?php
                     use Illuminate\Support\Facades\DB;
                     use Carbon\Carbon;
                     $booksadd = DB::select('select * from book where id ='.$Book_issue->book_id);
@@ -21,46 +20,50 @@
                     {
                         $membername=$member->name;
                     }
-                    @endphp
+                    ?>
 
 <tr>
         <th>Book name</th>
-        <td>{{ $bookname}}</td>
+        <td><?php echo e($bookname); ?></td>
     </tr>
 
     <tr>
         <th>Member Name</th>
         <td>
-             {{ $membername}}
+             <?php echo e($membername); ?>
+
         </td>
     </tr>
 
     <tr>
         <th>Book get date</th>
         <td>
-            {{ $Book_issue->getdate  }}
+            <?php echo e($Book_issue->getdate); ?>
+
         </td>
     </tr>
     <tr>
         <th>Book issued date</th>
         <td>
-            {{ $Book_issue->book_issued_day  }}
+            <?php echo e($Book_issue->book_issued_day); ?>
+
         </td>
     </tr>
     <tr>
             <th>Book returned date</th>
             <td>
-                {{ $Book_issue->book_returned_day  }}
+                <?php echo e($Book_issue->book_returned_day); ?>
+
             </td>
         </tr>
 
                   
             </tbody>
         </table>
-        <a href="{{ route('admin.book_issue') }}" class="btn btn-danger">Book issue home</a>
-        @if ( ($Book_issue->book_returned_day)==null)
-        <a class="btn btn-info" href="{{ route('admin.book_issue.return',[$Book_issue->id]) }}">Return book</a>
-        @endif
+        <a href="<?php echo e(route('admin.book_issue')); ?>" class="btn btn-danger">Book issue home</a>
+        <?php if( ($Book_issue->book_returned_day)==null): ?>
+        <a class="btn btn-info" href="<?php echo e(route('admin.book_issue.return',[$Book_issue->id])); ?>">Return book</a>
+        <?php endif; ?>
     </div>
     <script>
             // Get the modal
@@ -85,4 +88,5 @@
             }
             </script>
             
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

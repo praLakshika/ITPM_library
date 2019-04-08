@@ -19,6 +19,10 @@
         
         <?php echo $__env->yieldContent('styles'); ?>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="<?php echo e(asset('admin/css/userstyles.css')); ?>" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
         
         <?php echo $__env->yieldContent('head'); ?>
 

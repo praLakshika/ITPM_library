@@ -8,12 +8,20 @@
                         <div class="modal-header">
                             <div class="icon-box">
                                 <i class="fa fa-trash"></i>
-                            </div>				
+                            </div>
+                            
+                                <?php if(Session::has('message')): ?>
+                                <div class="alert alert-danger"><?php echo e(Session::get('message')); ?></div>
+                            <?php endif; ?>				
                             <h4 class="modal-title">Success</h4>	
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
+                        
                         <div class="modal-body">
                             <p>Success done your job online book Management</p>
+                            <?php if($messages!=null): ?>
+                            <div class="alert alert-danger"><?php echo e($messages); ?></div>
+                            <?php endif; ?>	
                         </div>
                         <div class="modal-footer">
                         <a href="/admin/online_book" class="btn btn-primary">Ok</a>
