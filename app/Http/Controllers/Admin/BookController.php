@@ -77,6 +77,20 @@ class BookController extends Controller
      */
     public function store(Request $request,Book $Book, Book_cat $Book_cat,Fine_fee $Fine_fee)
     {
+         $Books = DB::table('book')->where('bookname', $request['book_name'])->get();
+           
+        $bookname="panding";
+        foreach($Books as $Bookd)
+        {
+            $bookname=$Bookd->bookname;
+        }
+        
+        if($bookname==$request['book_name'])
+        {
+            $message = 'This book name is use. Name is '.$bookname;
+            return redirect()->back()->with('message', $message);
+               
+        }
         $validatedData = [
             'book_name' => 'required|regex:/^[a-zA-Z .]+$/u|max:255',
             'book_quantity' => 'required|numeric|integer',

@@ -11,28 +11,28 @@ class RoleSeeder extends Seeder
     {
         // DB::table('roles')->delete();
     
+        // DB::table('roles')->insert([
+        //     'id' => 3,
+        //     'name' => 'Receptionist',
+        //     'weight' => 0,
+        // ]);
+        // DB::table('roles')->insert([
+        //     'id' => 4,
+        //     'name' => 'Director',
+        //     'weight' => 0,
+        // ]);
+        // DB::table('roles')->insert([
+        //     'id' => 5,
+        //     'name' => 'PNO',
+        //     'weight' => 0,
+        // ]);
+        // DB::table('roles')->insert([
+        //     'id' => 6,
+        //     'name' => 'Doctor',
+        //     'weight' => 0,
+        // ]);
         DB::table('roles')->insert([
-            'id' => 3,
-            'name' => 'Receptionist',
-            'weight' => 0,
-        ]);
-        DB::table('roles')->insert([
-            'id' => 4,
-            'name' => 'Director',
-            'weight' => 0,
-        ]);
-        DB::table('roles')->insert([
-            'id' => 5,
-            'name' => 'PNO',
-            'weight' => 0,
-        ]);
-        DB::table('roles')->insert([
-            'id' => 6,
-            'name' => 'Doctor',
-            'weight' => 0,
-        ]);
-        DB::table('roles')->insert([
-            'id' => 7,
+            'id' => 2,
             'name' => 'Patient',
             'weight' => 0,
         ]);

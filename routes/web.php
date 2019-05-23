@@ -56,27 +56,32 @@ Route::group(['namespace' => 'Auth'], function () {
  * Backend routes
  */
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'administrator'], function () {
-   
+   // Dashboard
+   Route::get('/', 'DashboardControllerv@index')->name('dashboard');
+
     
     //member function
+     Route::get('member/add', 'MemberController@create')->name('member.add');
     Route::get('member','MemberController@index')->name('member');
-    Route::get('member/add', 'MemberController@create')->name('member.add');
+    Route::get('member/{member}', 'MemberController@show')->name('member.show');
+    Route::get('member/edit/{member}', 'MemberController@edit')->name('member.edit');
+    Route::post('member/edit/editmember','MemberController@update');
     Route::post('member/addmember', 'MemberController@store')->name('member.store');
     Route::get('member/delete/{member}', 'MemberController@destroy')->name('member.delete');
     Route::post('member/delete/deletemember','MemberController@sedelete');
+    Route::post('searchMember','MemberController@searchMember');
+
+
     //online book
     Route::get('online_book','OnlineBookController@index')->name('online_book');
     Route::get('online_book/add', 'OnlineBookController@create')->name('online_book.add');
-    
     Route::post('online_book/addbook', 'OnlineBookController@store')->name('online_book.addbook');
     Route::get('online_book/{bookonline}', 'OnlineBookController@show')->name('online_book.show');
     Route::get('online_book/edit/{bookonline}', 'OnlineBookController@edit')->name('online_book.edit');
-   
     Route::post('online_book/edit/updatebook','OnlineBookController@update');
-
     Route::get('online_book/delete/{bookonline}', 'OnlineBookController@destroy')->name('online_book.delete');
     Route::post('online_book/delete/deletebook','OnlineBookController@sedelete');
-    Route::post('searchbookissue', 'BookIssueController@search_book_issue')->name('book_issue.BookIssueController');
+    Route::post('searchonline_book', 'OnlineBookController@searchonline_book');
    
     //Book
     Route::get('book','BookController@index')->name('book');
@@ -86,13 +91,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('book/addbook', 'BookController@store')->name('book.addbook');
     Route::get('book/{book}', 'BookController@show')->name('book.show');
     Route::get('book/edit/{book}', 'BookController@edit')->name('book.edit');
-    
     Route::post('searchBook', 'BookController@searchBook')->name('book.searchBook');
-   
     Route::post('book/edit/updatebook','BookController@update');
-
     Route::get('book/delete/{book}', 'BookController@destroy')->name('book.delete');
     Route::post('book/delete/deletebook','BookController@sedelete');
+
     //Book issue addbook_category 
     Route::get('book_issue','BookIssueController@index')->name('book_issue');
     Route::get('book_issue/add','BookIssueController@create')->name('book_issue.add');
@@ -102,94 +105,67 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
      Route::post('book_issue/addbook/book_issue_book', 'BookIssueController@book_issue_book')->name('book_issue.addbook');
     Route::post('book_issue/addbook/book_issue_add', 'BookIssueController@book_issue_add')->name('book_issue.addbook.book_issue_add');
     Route::post('book_issue/return/returnbook','BookIssueController@returnbook');
-
-    
     Route::get('book_issue/delete/{book}', 'BookIssueController@destroy')->name('book_issue.delete');
     Route::post('book_issue/delete/deletebook','BookIssueController@sedelete');
-
     Route::get('book_issue/addbook/{member}', 'BookIssueController@selectbook')->name('book_issue.addbook');
     Route::post('book_issue/book_issue_member','BookIssueController@book_issue_member');
 
     //fine collection
-    
     Route::post('searchfine', 'FineCollectionController@searchfine');
     Route::get('fine_collection','FineCollectionController@index')->name('fine_collection');
     Route::get('fine_fee/{fine}', 'FineCollectionController@edit')->name('fine_fee.edit');
-    
     Route::get('fine_fee','FineCollectionController@fine_fee')->name('fine_fee'); 
     Route::get('fine_fee/add','FineCollectionController@fine_feeadd')->name('fine_fee.add');
     Route::post('book_issue/return/book_fine_collection','FineCollectionController@store');
     Route::post('fine_fee/fine_feeupdate','FineCollectionController@update');
-
-   
     
     //Author addauthor
     Route::get('author','AuthorController@index')->name('author');
     Route::get('author/add', 'AuthorController@create')->name('author.add');
     Route::post('author/addauthor', 'AuthorController@store')->name('author.store');
-
     Route::get('author/{Book_author}', 'AuthorController@show')->name('author.show');
     Route::get('author/edit/{Book_author}', 'AuthorController@edit')->name('author.edit');
-    
     Route::get('author/delete/{Book_author}', 'AuthorController@destroy')->name('author.delete');
     Route::post('author/delete/deleteauthor','AuthorController@sedelete');
-
     Route::post('searchBook', 'AuthorController@searchBook')->name('book.searchBook');
-   
     Route::post('author/edit/updateauthor','AuthorController@update');
-    // Dashboard
-    Route::get('/', 'DashboardController@index')->name('dashboard');
-   
     
-
-  
     });
 
-Route::group(['prefix' => 'patient', 'as' => 'patient.', 'namespace' => 'patient', 'middleware' => 'patient'], function () {
+Route::group(['prefix' => 'member', 'as' => 'patient.', 'namespace' => 'member', 'middleware' => 'patient'], function () {
+   
     // Dashboard
-    
-    Route::get('financial/index_invoice/{Invoice}', 'PatientController@financialinvoice')->name('financial.showinvoice');
- 
-    Route::get('diagnosis', 'PatientController@patientint')->name('diagnosis.index');
-    Route::get('diagnosis/{diagnosis}', 'DiagnosisController@show')->name('diagnosis.show');
     Route::get('/', 'PatientDashboardController@index')->name('dashboard');
     
-    //Employee
-    Route::get('employees', 'EmployeeController@index')->name('employees');
-    Route::get('employees/{employee}', 'EmployeeController@show')->name('employees.index');
+    //member function
+    Route::get('member','MemberController@index')->name('member');
+    Route::get('member/edit/{member}', 'MemberController@edit')->name('member.edit');
+    Route::post('member/edit/editmember','MemberController@update');
+        
+    //online book
+    Route::get('online_book','OnlineBookController@index')->name('online_book');
+    Route::get('online_book/{bookonline}', 'OnlineBookController@show')->name('online_book.show');
+    Route::post('searchonlinelibrary', 'OnlineBookController@searchonlinelibrary')->name('book.searchBook');
+
+    //Book
+    Route::get('book','BookController@index')->name('book');
+    Route::get('book/{book}', 'BookController@show')->name('book.show');
+    Route::post('searchBook', 'BookController@searchBook')->name('book.searchBook');
     
-    //appointment
-    Route::get('appointments', 'AppointmentController@index')->name('appointments');
-    Route::get('appointments/add', 'AppointmentController@create')->name('appointments.add');
-    Route::post('appointments/store', 'AppointmentController@store')->name('appointments.store');
-    Route::post('appointments/checkDate', 'AppointmentController@checkDate')->name('appointments.checkDate');
-    Route::post('appointments/checkDate/store', 'AppointmentController@store')->name('appointments.checkDate.store');
+    //Book issue addbook_category 
+    Route::get('book_issue','BookIssueController@index')->name('book_issue');
+    Route::get('book_issue/{Book_issue}', 'BookIssueController@show')->name('book_issue.show');
+    Route::post('Msearchbookissue','BookIssueController@search_book_issue');
+
+    //fine collection
+    Route::post('Msearchfine', 'FineCollectionController@searchfine');
+    Route::get('fine_collection','FineCollectionController@index')->name('fine_collection');
+
+    //Author addauthor
+    Route::get('author','AuthorController@index')->name('author');
+    Route::get('author/{Book_author}', 'AuthorController@show')->name('author.show');
+    Route::post('authorsearchauthor','AuthorController@authorsearchauthor');
    
-    Route::get('appointments/{appointment}', 'AppointmentController@show')->name('appointments.show');
-    //question
-    Route::get('question_forum', 'PatientController@quindex')->name('question_forum');
-    Route::get('question_forum/add', 'QuestionsForumController@create')->name('question_forum.add');
-    Route::get('question_forum/show/{questionsforum}', 'QuestionsForumController@showa')->name('question_forum.show');
-    
-    Route::post('question_forum/addques', 'QuestionsForumController@addques');
-    Route::post('searchservice', 'PatientController@searchservice');
-    
-    //store
-    Route::get('store', 'StoreController@index')->name('store');
-    Route::get('store/add', 'StoreController@create')->name('store.add');
-    
-    //Patient
-    Route::get('patient', 'PatientController@index')->name('patients');
-    //Services
-    Route::get('services', 'PatientController@servicesi')->name('services');
-    
-    //doctor
-    Route::get('doctors', 'PatientController@doctors')->name('doctors');
-    
-    //financial
-    Route::get('financial', 'PatientController@financial')->name('financial');
-    Route::get('financial/{financialBill}', 'PatientController@financialbill')->name('financial.showBill');
-  
 });
 
 Route::get('/', 'HomeController@index')->name('/');;

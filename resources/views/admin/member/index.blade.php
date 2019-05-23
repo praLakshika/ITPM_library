@@ -17,7 +17,7 @@
                         {{-- {{ link_to_route('admin.patient.chartView', 'Report', null, ['class' => 'btn btn-primary']) }} --}}
                         <div class="right-searchbar">
                                 <!-- Search form -->
-                                <form action="search" method="post" class="form-inline">
+                                <form action="searchMember" method="post" class="form-inline">
                                         {{ csrf_field() }}
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search" required />
@@ -59,10 +59,10 @@
                         </div>
                     </div>
                     <div class="dcard-body text-center">
-                        <a class="btn btn-xs btn-primary" href="{{ route('admin.member',[$member->id]) }}">
+                        <a class="btn btn-xs btn-primary" href="{{ route('admin.member.show',[$member->id]) }}">
                             <i class="fa fa-eye"></i>
                         </a>
-                        <a class="btn btn-xs btn-info" href="{{  route('admin.member',[$member->id]) }}">
+                        <a class="btn btn-xs btn-info" href="{{  route('admin.member.edit',[$member->id]) }}">
                             <i class="fa fa-pencil"></i>
                         </a>
                         <a class="btn btn-xs btn-danger" href="{{ route('admin.member.delete',[$member->id]) }}">

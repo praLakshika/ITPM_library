@@ -1,36 +1,10 @@
-@extends('patient.layouts.patient')
+@extends('member.layouts.member')
 
 @section('content')
     <!-- page content -->
+   
     <!-- top tiles -->
-    {{-- <div class="row tile_count">
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-users"></i>Total Patients</span>
-            <div class="count green">{{ $counts['users'] }}</div>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-users"></i>Total Employees</span>
-            <div class="count green">{{ $counts['users'] }}</div>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-users"></i>Total Doctors</span>
-            <div class="count green">{{ $counts['users'] }}</div>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user-times "></i>Appointments</span>
-            <div>
-                <span class="count green">{{  $counts['users'] - $counts['users_inactive'] }}</span>
-                <span class="count">/</span>
-                <span class="count red">{{ $counts['users_inactive'] }}</span>
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-lock"></i>Total Questions</span>
-            <div>
-                <span class="count green">{{  $counts['protected_pages'] }}</span>
-            </div>
-        </div>
-    </div> --}}
+  
     <!-- /top tiles -->
 
     {{--Carousel--}}
@@ -39,7 +13,7 @@
             <div class="x_panel">
                 <div class="row x_title">
                     <div class="col-md-6">
-                        <h3> Artificial LimbCare(PVT) LTD. Management System
+                        <h3> ARD book renting Management System
                         </h3>
                     </div>
                 </div>
@@ -62,15 +36,15 @@
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner">
                         <div class="item active">
-                          <img src="img/bg-img/bg1.jpg" alt="Los Angeles" width="1800px" height="800px">
+                          <img src="https://cdn-images-1.medium.com/max/1600/0*Ugp4QQOB6XvJwi-L" alt="Los Angeles" width="1800px" height="800px">
                         </div>
                   
                         <div class="item">
-                          <img src="img/bg-img/bg3.jpg" alt="Chicago" width="1800px" height="800px">
+                          <img src="https://focusonbelgium.be/sites/default/files/styles/big_article_image/public/ku_leuven_rob_stevens_1.jpg?itok=ccpdnhlx" alt="Chicago" width="1800px" height="800px">
                         </div>
                       
                         <div class="item">
-                          <img src="img/bg-img/bg4.jpg" alt="New york" width="1800px" height="800px">
+                          <img src="https://aatvos.com/wp-content/uploads/2018/10/Aatvos_Koln-Kalk_library-social-inclusion-1.jpg" alt="New york" width="1800px" height="800px">
                         </div>
                       </div>
                   

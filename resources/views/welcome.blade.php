@@ -32,7 +32,7 @@
               @elseif(auth()->user()->usertype == 'Director')
               <li>  <a href="{{ url('/director') }}">{{ __('views.welcome.admin') }}</a></li>
               @elseif(auth()->user()->usertype == 'Patient')
-              <li>  <a href="{{ url('/patient') }}">{{ __('views.welcome.admin') }}</a></li>
+              <li>  <a href="{{ url('/member') }}">{{ __('views.welcome.admin') }}</a></li>
               @elseif(auth()->user()->usertype == 'Doctor')
               <li>  <a href="{{ url('/doctor') }}">{{ __('views.welcome.admin') }}</a></li>
               @endif

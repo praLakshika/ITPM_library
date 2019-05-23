@@ -30,7 +30,14 @@ class OnlineBookController extends Controller
         $Online_librarys = Online_library::all();
         return view('admin.online_book.index', compact('Online_librarys'));
     }
-
+    public function searchonline_book(Request $request)
+    {
+        $Online_librarys = DB::table('online_library')
+        ->where('id', $request['search'])
+        ->orWhere('bookname', 'like', '%' . $request['search'] . '%')
+        ->get();
+        return view('admin.online_book.index', compact('Online_librarys'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -49,8 +56,43 @@ class OnlineBookController extends Controller
      */
     public function store(Request $request,Online_library $Book, onlineBook_cat $Book_cat)
     {
-        $bookVals = DB::select('select * from online_library ORDER BY id DESC LIMIT 1');
+        $Books = DB::table('online_library')->where('bookname', $request['book_name'])->get();
+           
+        $bookname="panding";
+        foreach($Books as $Bookd)
+        {
+            $bookname=$Bookd->bookname;
+        }
         
+        if($bookname==$request['book_name'])
+        {
+            $message = 'This book name is use. Name is '.$bookname;
+            return redirect()->back()->with('message', $message);
+               
+        }
+        $validatedData = [
+            'book_name' => 'required|regex:/^[a-zA-Z .]+$/u|max:255',
+            'book_published_year' => 'required',
+            'book_image' => 'required|image|mimes:jpg,png',
+            'book_PDF' => 'required|mimes:pdf',
+            'ids' =>'required'
+        ];
+        
+        $customMessages = [
+            'book_name.required' => 'Name is require',
+            'book_image.required' => 'Name is require',
+            'book_PDF.required' => 'Name is require',
+            'book_image.mimes' => 'Book image must be image',
+            'book_PDF.mimes' => 'Book PDF must be PDF document'
+        ];
+        $bookVals = DB::select('select * from online_library ORDER BY id DESC LIMIT 1');
+        $checkid =$request->input('ids') ;
+        if($checkid==null)
+       {
+        $message = 'select book category';
+        return redirect()->intended(route('admin.online_book.add'))->with('message', $message);
+       }
+       $IDcount=count($checkid);
         $lastid = 0;
         foreach($bookVals as $bookVal)
         {
@@ -83,13 +125,13 @@ class OnlineBookController extends Controller
         {
             $lastid=$bookVal->id;
         }
-        $checkid =$request->input('ids') ;
-       $IDcount=count($checkid);
+        
        for($i=0; $i<$IDcount; $i++ )
        {
         DB::insert('INSERT INTO `onlinebookcat` ( `bookid`,`book_cat_id`) VALUES ( ?,?)',[  $lastid,$checkid[$i]]);
        }
-        return view('admin.online_book.success');
+       $message = 'Add online book';
+       return view('admin.online_book.success',['messages' => $message]);
     }
 
     /**
@@ -126,6 +168,19 @@ class OnlineBookController extends Controller
      */
     public function update(Request $request, Online_library $bookonline)
     {
+        $validatedData = [
+            'name' => 'required|regex:/^[a-zA-Z .]+$/u|max:255',
+            'book_image' => 'image|mimes:jpg,png',
+            'book_PDF' => 'mimes:pdf'
+        ];
+        
+        $customMessages = [
+            'name.required' => 'Name is require',
+            'book_image.mimes' => 'Book image must be image',
+            'book_PDF.mimes' => 'Book PDF must be PDF document'
+        ];
+
+        $this->validate($request, $validatedData, $customMessages);
         $Booksonline = DB::select('select * from online_library where id ='.$request['id']);
         $file="panding";
         $lastid= "panding";

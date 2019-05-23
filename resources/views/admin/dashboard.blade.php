@@ -2,6 +2,20 @@
 
 @section('content')
     <!-- page content -->
+    @php
+    
+    use Illuminate\Support\Facades\DB;
+
+    $counts = [
+            'book' => \DB::table('book')->count(),
+            'book_author' => \DB::table('book_author')->count(),
+            'member' => \DB::table('member')->count(),
+            'online_library' => \DB::table('online_library')->count(),
+            'users_unconfirmed' => \DB::table('users')->where('confirmed', false)->count(),
+            'users_inactive' => \DB::table('users')->where('active', false)->count(),
+            'protected_pages' => 0
+        ];
+        @endphp
     <!-- top tiles -->
     <div class="row tile_count">
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">

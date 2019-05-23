@@ -68,13 +68,13 @@
                 @endif 
 
                 <ul class="nav side-menu">
-                    <li class="@if (Request::is('admin/employees/add') || Request::is('admin/employees/'.$emp.'/edit') || Request::is('admin/employees/'.$emp)) active @endif">
+                    <li class="@if (Request::is('admin/member') || Request::is('admin/searchMember') || Request::is('admin/member/'.$emp)) active @endif">
                         <a href="{{ route('admin.member') }}">
                             <i class="fas fa-id-badge" aria-hidden="true"></i>
                             {{ "Member" }}
                         </a>
                     </li>
-                    <li class="@if (Request::is('admin/financial')) active @endif">
+                    <li class="@if (Request::is('admin/online_book/add') ||Request::is('admin/searchonline_book')) active @endif">
                         <a href="{{ route('admin.online_book') }}">
                             <i class="fas fa-file-pdf-o" aria-hidden="true"></i>
                             {{ "Online book" }}

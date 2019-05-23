@@ -10,10 +10,10 @@
             </div>
             <div class="right-searchbar">
                     <!-- Search form -->
-                    <form action="searchdiagnosis" method="post" class="form-inline">
+                    <form action="searchonline_book" method="post" class="form-inline">
                             {{ csrf_field() }}
                         <div class="form-group">
-                            <input class="form-control" type="text" name="search" placeholder="Search diagnosis" aria-label="Search" required />
+                            <input class="form-control" type="text" name="search" placeholder="Search online library" aria-label="Search" required />
                         </div>
                         <br>
                        <br>

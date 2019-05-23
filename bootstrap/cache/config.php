@@ -5,16 +5,16 @@
   ),
   'app' => 
   array (
-    'name' => 'ARD book renting',
+    'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'debug_emails' => NULL,
+    'debug_emails' => false,
     'url' => 'http://localhost',
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'locales' => NULL,
-    'key' => 'base64:m+s1/cejr925vlvbpozCshAKL7i+GGfjvU1fUDNFnOU=',
+    'key' => 'base64:xKahAR20+C0lGzfo+Iy/YE7CJyD3In91rAXHezd1yJM=',
     'cipher' => 'AES-256-CBC',
     'log' => 'daily',
     'log_level' => 'debug',
@@ -225,7 +225,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\framework/cache/data',
+        'path' => '/home/jp/SLIIT/Project/library/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -259,8 +259,8 @@
   ),
   'captcha' => 
   array (
-    'siteKey' => '',
-    'secretKey' => '',
+    'siteKey' => NULL,
+    'secretKey' => NULL,
     'options' => 
     array (
       'hideBadge' => false,
@@ -335,7 +335,7 @@
       'sqlite' => 
       array (
         'driver' => 'sqlite',
-        'database' => 'librarydb',
+        'database' => 'librydb',
         'prefix' => '',
       ),
       'mysql' => 
@@ -343,9 +343,9 @@
         'driver' => 'mysql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'librarydb',
+        'database' => 'librydb',
         'username' => 'root',
-        'password' => 'root123',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -358,9 +358,9 @@
         'driver' => 'pgsql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'librarydb',
+        'database' => 'librydb',
         'username' => 'root',
-        'password' => 'root123',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'schema' => 'public',
@@ -374,7 +374,7 @@
       'default' => 
       array (
         'host' => '127.0.0.1',
-        'password' => '',
+        'password' => NULL,
         'port' => '6379',
         'database' => 0,
       ),
@@ -391,7 +391,7 @@
     array (
       'enabled' => true,
       'driver' => 'file',
-      'path' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\debugbar',
+      'path' => '/home/jp/SLIIT/Project/library/storage/debugbar',
       'connection' => NULL,
       'provider' => '',
     ),
@@ -471,10 +471,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\fonts/',
-      'font_cache' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\User\\AppData\\Local\\Temp',
-      'chroot' => 'C:\\Users\\User\\Desktop\\final\\library',
+      'font_dir' => '/home/jp/SLIIT/Project/library/storage/fonts/',
+      'font_cache' => '/home/jp/SLIIT/Project/library/storage/fonts/',
+      'temp_dir' => '/tmp',
+      'chroot' => '/home/jp/SLIIT/Project/library',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',
@@ -497,12 +497,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\app',
+        'root' => '/home/jp/SLIIT/Project/library/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\app/public',
+        'root' => '/home/jp/SLIIT/Project/library/storage/app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -512,7 +512,7 @@
         'key' => NULL,
         'secret' => NULL,
         'region' => NULL,
-        'bucket' => NULL,
+        'bucket' => '',
       ),
     ),
   ),
@@ -539,7 +539,7 @@
     'include_helpers' => false,
     'helper_files' => 
     array (
-      0 => 'C:\\Users\\User\\Desktop\\final\\library/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
+      0 => '/home/jp/SLIIT/Project/library/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
     ),
     'model_locations' => 
     array (
@@ -587,7 +587,7 @@
   ),
   'log-viewer' => 
   array (
-    'storage-path' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\logs',
+    'storage-path' => '/home/jp/SLIIT/Project/library/storage/logs',
     'pattern' => 
     array (
       'prefix' => 'laravel-',
@@ -656,24 +656,24 @@
   ),
   'mail' => 
   array (
-    'driver' => 'sendmail',
-    'host' => 'smtp.gmail.com',
-    'port' => '465',
+    'driver' => 'smtp',
+    'host' => 'smtp.mailtrap.io',
+    'port' => '2525',
     'from' => 
     array (
       'address' => 'blasanka@local.local',
       'name' => 'Blasanka',
     ),
-    'encryption' => '',
-    'username' => '',
-    'password' => '',
+    'encryption' => NULL,
+    'username' => NULL,
+    'password' => NULL,
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\Users\\User\\Desktop\\final\\library\\resources\\views/vendor/mail',
+        0 => '/home/jp/SLIIT/Project/library/resources/views/vendor/mail',
       ),
     ),
   ),
@@ -681,7 +681,7 @@
   array (
     'defaults' => 
     array (
-      'title' => 'ARD book renting',
+      'title' => 'Laravel',
       'description' => NULL,
       'keywords' => NULL,
       'author' => NULL,
@@ -689,15 +689,15 @@
       'robots' => 'INDEX, FOLLOW',
       'og' => 
       array (
-        'title' => 'ARD book renting',
+        'title' => 'Laravel',
         'image' => NULL,
         'description' => NULL,
         'type' => NULL,
-        'site_name' => 'ARD book renting',
+        'site_name' => 'Laravel',
       ),
       'twitter' => 
       array (
-        'title' => 'ARD book renting',
+        'title' => 'Laravel',
         'image' => NULL,
         'description' => NULL,
         'card' => NULL,
@@ -706,10 +706,10 @@
       ),
       'dc' => 
       array (
-        'title' => 'ARD book renting',
+        'title' => 'Laravel',
         'description' => NULL,
         'subject' => NULL,
-        'identifier' => 'ARD book renting',
+        'identifier' => 'Laravel',
         'creator' => NULL,
         'publisher' => NULL,
         'rights_holder' => NULL,
@@ -720,7 +720,7 @@
         'audience' => NULL,
       ),
     ),
-    'title_suffix' => '| ARD book renting',
+    'title_suffix' => '| Laravel',
   ),
   'protection' => 
   array (
@@ -916,7 +916,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\framework/sessions',
+    'files' => '/home/jp/SLIIT/Project/library/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -962,9 +962,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\Users\\User\\Desktop\\final\\library\\resources\\views',
+      0 => '/home/jp/SLIIT/Project/library/resources/views',
     ),
-    'compiled' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\framework\\views',
+    'compiled' => '/home/jp/SLIIT/Project/library/storage/framework/views',
   ),
   'trustedproxy' => 
   array (
@@ -987,7 +987,7 @@
         'host' => 'localhost',
         'port' => 11211,
       ),
-      'dir' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\cache',
+      'dir' => '/home/jp/SLIIT/Project/library/storage/cache',
     ),
     'properties' => 
     array (
@@ -1053,7 +1053,7 @@
       ),
       'store' => 
       array (
-        'path' => 'C:\\Users\\User\\Desktop\\final\\library\\storage\\exports',
+        'path' => '/home/jp/SLIIT/Project/library/storage/exports',
         'returnInfo' => false,
       ),
       'pdf' => 
@@ -1063,15 +1063,15 @@
         array (
           'DomPDF' => 
           array (
-            'path' => 'C:\\Users\\User\\Desktop\\final\\library\\vendor/dompdf/dompdf/',
+            'path' => '/home/jp/SLIIT/Project/library/vendor/dompdf/dompdf/',
           ),
           'tcPDF' => 
           array (
-            'path' => 'C:\\Users\\User\\Desktop\\final\\library\\vendor/tecnick.com/tcpdf/',
+            'path' => '/home/jp/SLIIT/Project/library/vendor/tecnick.com/tcpdf/',
           ),
           'mPDF' => 
           array (
-            'path' => 'C:\\Users\\User\\Desktop\\final\\library\\vendor/mpdf/mpdf/',
+            'path' => '/home/jp/SLIIT/Project/library/vendor/mpdf/mpdf/',
           ),
         ),
       ),
